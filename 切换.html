@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul,ol,li{
+        list-style: none;
+    }
+    .box{
+        width: 500px;
+        height: 300px;
+        border: 10px solid pink;
+        margin: 30px auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .box >ul{
+        height: 45px;
+        display: flex;
+    }
+    .box >ul>li{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        background-color: red;
+        font-size: 4px;
+    }
+    .box>ul>li.active{
+        background-color: green;
+    }
+    .box >ol{
+        flex: 1;
+        position: relative;
+    }
+    .box>ol>li{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: indigo;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 100px;
+        color: #fff;
+        display: none;
+
+    }
+    .box>ol>li.active{
+        display: flex;
+    }
+</style>
+<body>
+ <div class="box">
+     <ul>
+         <li class="active">1</li>
+         <li>2</li>
+         <li>3</li>
+     </ul>
+     <ol>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ol>
+ </div>  
+ <script src='https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js'></script>
+ <script>
+$("ul li").mouseenter(function(){
+    $(this).addClass('active').siblings().removeClass('active').parent().next().children().eq($(this).index()).addClass('active').siblings().removeClass('active')
+})
+ </script>
+</body>
+</html>
